@@ -41,5 +41,10 @@ class Lesson extends ActiveRecord
             'created_at' => 'Created At',
         ];
     }
+
+    public function getFormattedCreatedAt()
+    {
+        return Yii::$app->formatter->asDate($this->created_at, 'php:d.m.Y');
+    }
 }
 

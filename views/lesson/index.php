@@ -6,11 +6,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lesson-index">
     <h1><?= Html::encode($this->title) ?></h1>
+    <?= Html::a('<i class="fa fa-plus"></i> Create Lesson', ['create'], ['class' => 'btn btn-success mb-3']) ?>
 
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>Title</th>
             <th>Description</th>
             <th>Video URL</th>
@@ -19,13 +20,13 @@ $this->params['breadcrumbs'][] = $this->title;
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($lessons as $lesson): ?>
+        <?php foreach ($lessons as $index => $lesson): ?>
             <tr>
-                <td><?= Html::encode($lesson->id) ?></td>
+                <td><?= $index + 1 ?></td>
                 <td><?= Html::encode($lesson->title) ?></td>
                 <td><?= Html::encode($lesson->description) ?></td>
                 <td><?= Html::a(Html::encode($lesson->video_link), $lesson->video_link, ['target' => '_blank']) ?></td>
-                <td><?= Html::encode($lesson->created_at) ?></td>
+                <td><?= Html::encode($lesson->getFormattedCreatedAt()) ?></td>
                 <td class="actions-column">
                     <?= Html::a('<i class="fa fa-eye"></i>', ['view', 'id' => $lesson->id], ['class' => 'btn btn-info btn-sm']) ?>
                     <?= Html::a('<i class="fas fa-pencil-alt"></i>', ['update', 'id' => $lesson->id], ['class' => 'btn btn-primary btn-sm']) ?>
