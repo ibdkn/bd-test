@@ -31,8 +31,12 @@ class LessonController extends Controller
 
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $completedLessons = $model->completedLessons;
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'completedLessons' => $completedLessons,
         ]);
     }
 

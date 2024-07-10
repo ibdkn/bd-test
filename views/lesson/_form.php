@@ -17,7 +17,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'video_link')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput(['type' => 'date', 'value' => $model->isNewRecord ? date('Y-m-d') : date('Y-m-d', strtotime($model->created_at))]) ?>
+    <?= $form->field($model, 'created_at')->hiddenInput(['value' => date('Y-m-d H:i:s')])->label(false) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

@@ -16,7 +16,7 @@ class m240708_153345_create_completed_lessons_table extends Migration
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->notNull(),
             'lesson_id' => $this->integer()->notNull(),
-            'completed_at' => $this->dateTime()->notNull(),
+            'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
         ]);
 
         // creates index for column `user_id`

@@ -41,4 +41,32 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 </p>
 
+<h2>Users who completed this lesson</h2>
+<?php
+if (!empty($completedLessons)):
+?>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Completed At</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($completedLessons as $index => $completedLesson): ?>
+        <tr>
+            <td><?= $index + 1 ?></td>
+            <td><?= Html::encode($completedLesson->user->first_name) ?></td>
+            <td><?= Html::encode($completedLesson->user->last_name) ?></td>
+            <td><?= Html::encode(Yii::$app->formatter->asDatetime($completedLesson->completed_at, 'php:d.m.Y H:i:s')) ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php else: ?>
+<p>No users have completed this lesson yet.</p>
+<?php endif; ?>
+
 </div>

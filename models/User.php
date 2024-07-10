@@ -43,4 +43,9 @@ class User extends \yii\db\ActiveRecord
             'last_name' => 'Last Name',
         ];
     }
+
+    public function getCompletedLessons()
+    {
+        return $this->hasMany(CompletedLesson::class, ['user_id' => 'id']);
+    }
 }
