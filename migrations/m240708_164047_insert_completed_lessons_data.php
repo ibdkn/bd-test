@@ -2,14 +2,8 @@
 
 use yii\db\Migration;
 
-/**
- * Handles the inserting of data into table `{{%completed_lessons}}`.
- */
 class m240708_164047_insert_completed_lessons_data extends Migration
 {
-    /**
-     * {@inheritdoc}
-     */
     public function safeUp()
     {
         $this->batchInsert('{{%completed_lessons}}', ['user_id', 'lesson_id', 'completed_at'], [
@@ -23,13 +17,9 @@ class m240708_164047_insert_completed_lessons_data extends Migration
             [4, 5, $this->getCurrentTimestamp()],
             [5, 3, $this->getCurrentTimestamp()],
             [5, 4, $this->getCurrentTimestamp()],
-            // добавьте больше данных по необходимости
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function safeDown()
     {
         $this->delete('{{%completed_lessons}}', ['user_id' => [1, 2, 3, 4, 5]]);

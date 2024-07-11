@@ -2,16 +2,12 @@
 
 use yii\db\Migration;
 
-/**
- * Class m240624_175236_insert_users_data
- */
 class m240624_175236_insert_users_data extends Migration
 {
-    /**
-     * {@inheritdoc}
-     */
     public function safeUp()
     {
+        // метод batchInsert вставляет несколько строк данных в таблицу
+        // принимает 3 парамера: название таблицы, массив имен столбцом и массив массивов значений, которые будут добавлены
         $this->batchInsert('{{%users}}', ['id', 'first_name', 'last_name'], [
             [1, 'Anna', 'Pratt'],
             [2, 'George', 'Donovan'],
@@ -20,27 +16,10 @@ class m240624_175236_insert_users_data extends Migration
             [5, 'Carol', 'Burnett'],
         ]);
     }
-
-    /**
-     * {@inheritdoc}
-     */
     public function safeDown()
     {
+        // удаление строк из таблицы по id
+        // ['id' => [1, 2, 3, 4, 5]] - условие, которое указывает, какие записи должны быть удалены.
         $this->delete('{{%users}}', ['id' => [1, 2, 3, 4, 5]]);
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m240624_175236_insert_users_data cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

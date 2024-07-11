@@ -2,14 +2,8 @@
 
 use yii\db\Migration;
 
-/**
- * Handles the inserting of data into table `{{%lessons}}`.
- */
 class m240708_155345_insert_lessons_data extends Migration
 {
-    /**
-     * {@inheritdoc}
-     */
     public function safeUp()
     {
         $this->batchInsert('{{%lessons}}', ['id', 'title', 'description', 'video_link', 'created_at'], [
@@ -26,9 +20,6 @@ class m240708_155345_insert_lessons_data extends Migration
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function safeDown()
     {
         $this->delete('{{%lessons}}', ['id' => [1,2,3,4,5,6,7,8,9,10]]);
