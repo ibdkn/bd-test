@@ -10,11 +10,12 @@ use yii\filters\VerbFilter;
 
 class UserController extends Controller
 {
+    // Метод behaviors() возвращает массив настроек поведения контроллера.
     public function behaviors()
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::className(), // VerbFilter - ограничит доступ к методу delete только через POST-запросы.
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -22,6 +23,9 @@ class UserController extends Controller
         ];
     }
 
+    // Метод actionIndex:
+    // - Получает все записи из таблицы users с помощью метода find()->all() модели User.
+    // - Передает полученные данные в вид index для отображения.
     public function actionIndex()
     {
         $users = User::find()->all();
@@ -29,13 +33,6 @@ class UserController extends Controller
             'users' => $users,
         ]);
     }
-
-//    public function actionView($id)
-//    {
-//        return $this->render('view', [
-//            'model' => $this->findModel($id),
-//        ]);
-//    }
 
     public function actionView($id)
     {
